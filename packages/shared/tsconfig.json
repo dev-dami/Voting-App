@@ -1,0 +1,11 @@
+{
+	// Extends the repo base; "types" is narrowed to [] so this
+	// zero-dependency package typechecks without installs.
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		"types": []
+	},
+	"include": ["src"]
+}

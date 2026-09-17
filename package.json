@@ -1,13 +1,20 @@
 {
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "dev:api": "bun run --cwd apps/api dev",
+    "dev:web": "bun run --cwd apps/web dev",
+    "build": "bun run --cwd apps/api build && bun run --cwd apps/web build",
+    "test": "bun test",
+    "db:migrate": "bun run --cwd apps/api db:migrate"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "bcrypt": "^6.0.0",
     "bull": "^4.16.5",
-    "chart.js": "^4.5.0",
+    "chart.js": "^4.5.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.1",
     "ejs": "^3.1.10",
@@ -25,9 +32,11 @@
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.1.2",
     "cssnano": "^7.1.1",
     "nodemon": "^3.1.10",
     "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1"
+    "postcss-cli": "^11.0.1",
+    "typescript": "^5.9.2"
   }
 }

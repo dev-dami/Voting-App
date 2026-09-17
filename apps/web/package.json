@@ -1,0 +1,32 @@
+{
+	"name": "@yhs-voting/web",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"description": "YHS Voting web client — React + Vite + TypeScript + Tailwind. LAN-friendly, no CDN runtime deps.",
+	"scripts": {
+		"dev": "vite --host 0.0.0.0 --port 5173",
+		"build": "tsc --noEmit -p . && vite build",
+		"preview": "vite preview --host 0.0.0.0 --port 5173",
+		"typecheck": "tsc --noEmit -p ."
+	},
+	"dependencies": {
+		"@base-ui-components/react": "^1.0.0-rc.0",
+		"@tanstack/react-query": "^5.59.0",
+		"chart.js": "^4.5.1",
+		"lucide-react": "^1.47.0",
+		"react": "^18.3.1",
+		"react-chartjs-2": "^5.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.28.0"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.12",
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react": "^4.3.4",
+		"tailwindcss": "^4.1.12",
+		"typescript": "^5.6.3",
+		"vite": "^6.0.0"
+	}
+}

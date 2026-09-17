@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+	--color-brand-50: #fdf2f2;
+	--color-brand-100: #fbe4e4;
+	--color-brand-200: #f7c9c9;
+	--color-brand-300: #f0a3a3;
+	--color-brand-400: #e06f6f;
+	--color-brand-500: #c94848;
+	--color-brand-600: #a73434;
+	--color-brand-700: #8f2c2c;
+	--color-brand-800: #752727;
+	--color-brand-900: #5f2121;
+	--color-brand: #a73434;
+	--color-brand-dark: #8f2c2c;
+	--color-brand-darker: #8b1a1a;
+	--color-brand-soft: #fdf2f2;
+}
+
+:root {
+	color-scheme: light;
+}
+
+body {
+	background-color: #f4f4f5;
+	color: #18181b;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-family:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+	outline-style: solid;
+	outline-width: 2px;
+	outline-offset: 2px;
+	outline-color: #a73434;
+}
+
+label:has(input:focus-visible) {
+	outline: 2px solid var(--color-brand-600);
+	outline-offset: 2px;
+}
+
+.font-crest {
+	font-family: Georgia, "Palatino Linotype", "Times New Roman", serif;
+}
+
+/* Base UI transitions (all popups, dialogs, toasts, selects share these). */
+.ui-popup {
+	transition:
+		opacity 0.16s ease,
+		transform 0.16s ease;
+}
+.ui-popup[data-starting-style],
+.ui-popup[data-ending-style] {
+	opacity: 0;
+	transform: scale(0.97) translateY(4px);
+}
+.ui-backdrop {
+	transition: opacity 0.16s ease;
+}
+.ui-backdrop[data-starting-style],
+.ui-backdrop[data-ending-style] {
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.01ms;
+		transition-duration: 0.01ms;
+	}
+}

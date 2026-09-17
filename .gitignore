@@ -2,3 +2,9 @@
 /.env
 /TODO.md
 exportdataformat.md
+node_modules
+dist
+*.db*
+*.sqlite*
+logs/
+coverage
