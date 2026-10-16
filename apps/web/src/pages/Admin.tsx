@@ -1,21 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ReactElement } from "react";
 import { useState } from "react";
-import {
-	Award,
-	CalendarClock,
-	ChartColumn,
-	Inbox,
-	LayoutDashboard,
-	LogOut,
-	Settings as SettingsIcon,
-	Undo2,
-	Users,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 import { useAuth } from "../lib/auth";
 import { disconnectLiveSocket } from "../lib/socket";
 import { issueApi, userApi } from "../lib/api";
-import { Badge } from "../ui/display";
 import { Candidates } from "../components/admin/candidates";
 import { IssueQueue } from "../components/admin/issue-queue";
 import { AdminOverview } from "../components/admin/overview";
@@ -37,27 +26,27 @@ type Section =
 
 const GROUPS: {
 	label: string;
-	items: { id: Section; label: string; icon: typeof Users }[];
+	items: { id: Section; label: string }[];
 }[] = [
 	{
 		label: "Manage",
 		items: [
-			{ id: "overview", label: "Overview", icon: LayoutDashboard },
-			{ id: "timing", label: "Timing", icon: CalendarClock },
-			{ id: "voters", label: "Voters", icon: Users },
-			{ id: "candidates", label: "Candidates", icon: Award },
+			{ id: "overview", label: "Overview" },
+			{ id: "timing", label: "Timing" },
+			{ id: "voters", label: "Voters" },
+			{ id: "candidates", label: "Candidates" },
 		],
 	},
 	{
 		label: "Insights",
-		items: [{ id: "results", label: "Results", icon: ChartColumn }],
+		items: [{ id: "results", label: "Results" }],
 	},
 	{
 		label: "System",
 		items: [
-			{ id: "rollbacks", label: "Rollbacks", icon: Undo2 },
-			{ id: "issues", label: "Issues", icon: Inbox },
-			{ id: "settings", label: "Settings", icon: SettingsIcon },
+			{ id: "rollbacks", label: "Rollbacks" },
+			{ id: "issues", label: "Issues" },
+			{ id: "settings", label: "Settings" },
 		],
 	},
 ];
@@ -129,17 +118,17 @@ export function Admin(): ReactElement {
 
 	return (
 		<div className="-mx-4 -my-6 sm:-mx-6 lg:-mx-8 lg:flex lg:items-stretch">
-			<aside className="mb-4 px-4 pt-4 sm:px-6 lg:sticky lg:top-[57px] lg:mb-0 lg:flex lg:h-[calc(100vh-57px)] lg:w-64 lg:shrink-0 lg:flex-col lg:overflow-y-auto lg:border-r lg:border-zinc-200 lg:bg-white lg:px-0 lg:py-4 lg:pt-4">
-				<p className="mb-1 hidden px-5 text-[11px] font-bold tracking-widest text-zinc-400 uppercase lg:block">
+			<aside className="mb-4 px-4 pt-4 sm:px-6 lg:sticky lg:top-[57px] lg:mb-0 lg:flex lg:h-[calc(100vh-57px)] lg:w-60 lg:shrink-0 lg:flex-col lg:overflow-y-auto lg:border-l lg:border-stone-200/80 lg:bg-stone-50/60 lg:px-0 lg:py-6 lg:pt-6">
+				<p className="mb-1 hidden px-5 text-[10px] font-medium tracking-[0.18em] text-stone-400 uppercase lg:block">
 					Admin console
 				</p>
 				<nav
 					aria-label="Admin sections"
-					className="flex gap-1 overflow-x-auto rounded-xl border border-zinc-200 bg-white p-1.5 shadow-sm lg:flex-col lg:gap-0.5 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:px-3 lg:shadow-none"
+					className="flex gap-1 overflow-x-auto rounded-xl border border-stone-200/80 bg-white p-1.5 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:px-3"
 				>
 					{GROUPS.map((g) => (
-						<div key={g.label} className="flex gap-1 lg:mb-2 lg:flex-col lg:gap-0.5">
-							<p className="hidden px-3 pt-2 pb-1 text-[11px] font-bold tracking-widest text-zinc-400 uppercase lg:block">
+						<div key={g.label} className="flex gap-1 lg:mb-3 lg:flex-col lg:gap-0.5">
+							<p className="hidden px-3 pt-1 pb-1.5 text-[10px] font-medium tracking-[0.18em] text-stone-400 uppercase lg:block">
 								{g.label}
 							</p>
 							{g.items.map((s) => {
@@ -151,27 +140,23 @@ export function Admin(): ReactElement {
 										type="button"
 										onClick={() => setSection(s.id)}
 										aria-current={active ? "page" : undefined}
-										className={`flex shrink-0 items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm font-semibold whitespace-nowrap transition-colors ${
+										className={`flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-left text-sm whitespace-nowrap transition-colors ${
 											active
-												? "bg-brand-50 text-brand-700"
-												: "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"
+												? "bg-white font-medium text-stone-900 ring-1 ring-stone-200/80 lg:bg-white"
+												: "text-stone-500 hover:text-stone-900"
 										}`}
 									>
 										<span
 											aria-hidden="true"
-											className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ${
-												active
-													? "bg-brand-600 text-white"
-													: "bg-zinc-100 text-zinc-500"
+											className={`h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
+												active ? "bg-brand-600" : "bg-stone-300"
 											}`}
-										>
-											<s.icon className="h-4 w-4" />
-										</span>
+										/>
 										<span className="flex-1">{s.label}</span>
 										{badge !== null && (
-											<Badge tone={s.id === "issues" ? "amber" : "zinc"}>
+											<span className="text-[11px] tabular-nums text-stone-400">
 												{badge}
-											</Badge>
+											</span>
 										)}
 									</button>
 								);
@@ -179,19 +164,19 @@ export function Admin(): ReactElement {
 						</div>
 					))}
 				</nav>
-				<div className="mt-auto hidden border-t border-zinc-100 p-3 lg:block">
-					<div className="flex items-center gap-2.5 rounded-xl bg-zinc-50 p-2.5">
+				<div className="mt-auto hidden border-t border-stone-200/80 p-4 lg:block">
+					<div className="flex items-center gap-2.5">
 						<span
 							aria-hidden="true"
-							className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white"
+							className="font-crest flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-stone-900 text-sm font-semibold text-white"
 						>
 							{initial}
 						</span>
 						<span className="min-w-0 flex-1 leading-tight">
-							<span className="block truncate text-xs font-bold text-zinc-900">
+							<span className="block truncate text-xs font-medium text-stone-900">
 								{user?.studentId ?? "—"}
 							</span>
-							<span className="block text-[11px] text-zinc-500">
+							<span className="block text-[11px] text-stone-400">
 								Administrator
 							</span>
 						</span>
@@ -200,7 +185,7 @@ export function Admin(): ReactElement {
 							onClick={() => void onLogout()}
 							title="Logout"
 							aria-label="Logout"
-							className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-200 hover:text-zinc-800"
+							className="rounded-lg p-2 text-stone-400 hover:bg-stone-200/60 hover:text-stone-800"
 						>
 							<LogOut className="h-4 w-4" aria-hidden="true" />
 						</button>
@@ -209,9 +194,11 @@ export function Admin(): ReactElement {
 			</aside>
 
 			<div className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
-				<div className="mb-4">
-					<h1 className="text-xl font-bold text-zinc-900">{heading.title}</h1>
-					<p className="text-xs text-zinc-500">{heading.body}</p>
+				<div className="mb-6 max-w-2xl">
+					<h1 className="font-crest text-2xl font-semibold tracking-tight text-stone-900">
+						{heading.title}
+					</h1>
+					<p className="mt-1 text-[13px] text-stone-500">{heading.body}</p>
 				</div>
 				{section === "overview" && (
 					<AdminOverview onNavigate={(s: string) => setSection(s as Section)} />

@@ -24,24 +24,24 @@ export function DialogShell({
 			<BaseDialog.Portal>
 				<BaseDialog.Backdrop className="ui-backdrop fixed inset-0 z-40 bg-black/40" />
 				<BaseDialog.Popup
-					className={`ui-popup fixed top-1/2 left-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-xl bg-white p-4 [overflow-wrap:anywhere] sm:p-5 shadow-xl ${
+					className={`ui-popup fixed top-1/2 left-1/2 z-50 max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-2xl bg-white p-4 [overflow-wrap:anywhere] sm:p-6 shadow-lg shadow-stone-900/5 ${
 						wide ? "max-w-lg" : "max-w-md"
 					}`}
 				>
-					<div className="mb-4 flex items-start justify-between gap-3">
+					<div className="mb-5 flex items-start justify-between gap-3">
 						<div className="min-w-0">
-							<BaseDialog.Title className="text-base font-bold text-zinc-900">
+							<BaseDialog.Title className="font-crest text-lg font-semibold tracking-tight text-stone-900">
 								{title}
 							</BaseDialog.Title>
 							{description ? (
-								<BaseDialog.Description className="mt-0.5 text-xs text-zinc-500">
+								<BaseDialog.Description className="mt-0.5 text-xs text-stone-500">
 									{description}
 								</BaseDialog.Description>
 							) : null}
 						</div>
 						<BaseDialog.Close
 							aria-label="Close dialog"
-							className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
+							className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-100 hover:text-stone-700"
 						>
 							<X className="h-4 w-4" aria-hidden="true" />
 						</BaseDialog.Close>
@@ -73,7 +73,7 @@ export function ConfirmDialog({
 }): ReactElement {
 	return (
 		<DialogShell open={open} onOpenChange={onOpenChange} title={title}>
-			<div className="flex items-start gap-2.5 rounded-lg bg-red-50 p-3 text-xs text-red-800">
+			<div className="flex items-start gap-2.5 rounded-xl bg-red-50 p-3 text-xs text-red-800">
 				<TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
 				<p>{body}</p>
 			</div>
@@ -107,6 +107,7 @@ export function ConfirmAction({
 	confirmLabel,
 	pending = false,
 	buttonSize = "sm",
+	variant = "danger",
 	onConfirm,
 }: {
 	label: string;
@@ -115,15 +116,21 @@ export function ConfirmAction({
 	confirmLabel?: string;
 	pending?: boolean;
 	buttonSize?: "sm" | "md";
+	variant?: "danger" | "ghost";
 	onConfirm: () => void;
 }): ReactElement {
 	const [open, setOpen] = useState(false);
 	return (
 		<>
 			<Button
-				variant="danger"
+				variant={variant}
 				size={buttonSize}
 				disabled={pending}
+				className={
+					variant === "ghost"
+						? "text-red-700 hover:bg-red-50 hover:text-red-800"
+						: undefined
+				}
 				onClick={() => setOpen(true)}
 			>
 				{label}

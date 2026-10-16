@@ -60,7 +60,7 @@ export function AdminOverview({
 	];
 
 	return (
-		<div className="space-y-4">
+		<div className="space-y-5">
 			<div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
 				<Stat
 					label="Election"
@@ -86,7 +86,7 @@ export function AdminOverview({
 				/>
 			</div>
 
-			<Card className="p-4">
+			<Card className="p-5">
 				<SectionTitle>At a glance</SectionTitle>
 				{loading ? (
 					<div className="space-y-2">
@@ -94,26 +94,28 @@ export function AdminOverview({
 						<Skeleton className="h-5" />
 					</div>
 				) : (
-					<ul className="grid gap-2 text-xs sm:grid-cols-2">
-						<li className="flex items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2">
-							<Users className="h-4 w-4 text-zinc-400" aria-hidden="true" />
+					<ul className="grid gap-2.5 text-[13px] sm:grid-cols-2">
+						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
+							<Users className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
 							<span>
-								<span className="font-bold">
+								<span className="font-semibold text-stone-900">
 									{usersQuery.data?.users.length ?? 0}
 								</span>{" "}
 								user accounts registered
 							</span>
 						</li>
-						<li className="flex items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2">
-							<Crown className="h-4 w-4 text-zinc-400" aria-hidden="true" />
+						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
+							<Crown className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
 							<span>
-								<span className="font-bold">{candidates}</span> candidates
-								across <span className="font-bold">{positions}</span> positions
+								<span className="font-semibold text-stone-900">{candidates}</span>{" "}
+								candidates across{" "}
+								<span className="font-semibold text-stone-900">{positions}</span>{" "}
+								positions
 							</span>
 						</li>
-						<li className="flex items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2">
+						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
 							<CalendarClock
-								className="h-4 w-4 text-zinc-400"
+								className="h-4 w-4 shrink-0 text-stone-400"
 								aria-hidden="true"
 							/>
 							<span>
@@ -127,16 +129,17 @@ export function AdminOverview({
 								</Badge>
 							</span>
 						</li>
-						<li className="flex items-center gap-2 rounded-lg bg-zinc-50 px-3 py-2">
-							<Inbox className="h-4 w-4 text-zinc-400" aria-hidden="true" />
+						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
+							<Inbox className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
 							<span>
-								<span className="font-bold">{openIssues}</span> open issues —{" "}
+								<span className="font-semibold text-stone-900">{openIssues}</span>{" "}
+								open issues —{" "}
 								<button
 									type="button"
 									onClick={() => onNavigate("issues")}
-									className="rounded font-medium text-brand-700 underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2"
+									className="rounded font-medium text-brand-700 underline decoration-stone-300 underline-offset-2 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2"
 								>
-									Manage issues
+									manage issues
 								</button>
 							</span>
 						</li>
@@ -144,22 +147,22 @@ export function AdminOverview({
 				)}
 			</Card>
 
-			<div className="grid gap-2 sm:grid-cols-2">
+			<div className="grid gap-2.5 sm:grid-cols-2">
 				{shortcuts.map((s) => (
 					<button
 						key={s.section}
 						type="button"
 						onClick={() => onNavigate(s.section)}
-						className="group flex items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-white p-3 text-left shadow-sm transition-colors hover:border-brand-300 hover:shadow"
+						className="group flex items-center justify-between gap-2 rounded-2xl border border-stone-200/80 bg-white p-4 text-left transition-colors hover:border-brand-300"
 					>
 						<span>
-							<span className="block text-sm font-bold text-zinc-900">
+							<span className="block text-sm font-medium text-stone-900">
 								{s.label}
 							</span>
-							<span className="block text-xs text-zinc-500">{s.body}</span>
+							<span className="block mt-0.5 text-xs text-stone-500">{s.body}</span>
 						</span>
 						<ArrowRight
-							className="h-4 w-4 shrink-0 text-zinc-300 transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600"
+							className="h-4 w-4 shrink-0 text-stone-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-600"
 							aria-hidden="true"
 						/>
 					</button>

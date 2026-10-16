@@ -6,20 +6,20 @@ type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
 	brand:
-		"bg-brand-600 font-semibold text-white shadow-sm hover:bg-brand-700 disabled:opacity-60",
+		"bg-stone-900 font-medium text-white hover:bg-stone-800 disabled:opacity-60",
 	outline:
-		"border border-zinc-300 bg-white font-semibold text-zinc-700 hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-60",
+		"border border-stone-200 bg-white font-medium text-stone-600 hover:border-stone-300 hover:bg-stone-50 disabled:opacity-60",
 	ghost:
-		"font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-60",
+		"font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-900 disabled:opacity-60",
 	danger:
-		"bg-red-700 font-semibold text-white shadow-sm hover:bg-red-800 disabled:opacity-60",
-	soft: "bg-brand-50 font-semibold text-brand-700 hover:bg-brand-100 disabled:opacity-60",
+		"bg-red-800 font-medium text-white hover:bg-red-900 disabled:opacity-60",
+	soft: "bg-brand-50 font-medium text-brand-700 hover:bg-brand-100 disabled:opacity-60",
 };
 
 const SIZES: Record<Size, string> = {
-	sm: "min-h-10 min-w-10 rounded-md px-3 py-2 text-sm",
+	sm: "min-h-10 min-w-10 rounded-lg px-3 py-2 text-sm",
 	md: "min-h-11 min-w-11 rounded-lg px-4 py-2 text-sm",
-	lg: "min-h-12 min-w-12 rounded-lg px-6 py-3 text-base",
+	lg: "min-h-12 min-w-12 rounded-xl px-6 py-3 text-base",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

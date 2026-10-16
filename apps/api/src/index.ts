@@ -9,6 +9,7 @@ import { securityHeaders } from "./lib/security-headers";
 import { authRoutes } from "./routes/auth-routes";
 import { ballotRoutes } from "./routes/ballot-routes";
 import { candidateRoutes } from "./routes/candidate-routes";
+import { fileRoutes } from "./routes/files";
 import { electionRoutes } from "./routes/election-routes";
 import { issueRoutes } from "./routes/issue-routes";
 import { resultRoutes } from "./routes/result-routes";
@@ -16,6 +17,12 @@ import { userRoutes } from "./routes/user-routes";
 import { liveRoutes } from "./routes/ws";
 
 export function createApp() {
+	return new Elysia()
+		.use(fileRoutes)
+		.use(apiRoutes());
+}
+
+function apiRoutes() {
 	return new Elysia({ prefix: "/api" })
 		.use(securityHeaders)
 		.use(

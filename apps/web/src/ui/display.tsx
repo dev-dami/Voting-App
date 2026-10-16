@@ -10,7 +10,9 @@ export function Card({
 }): ReactElement {
 	return (
 		<div
-			className={`rounded-xl border border-zinc-200 bg-white shadow-sm ${className}`}
+			className={`rounded-2xl border border-stone-200/80 bg-white ${
+				className
+			}`}
 		>
 			{children}
 		</div>
@@ -25,8 +27,10 @@ export function SectionTitle({
 	action?: ReactNode;
 }): ReactElement {
 	return (
-		<div className="mb-3 flex min-w-0 flex-wrap items-center justify-between gap-x-4 gap-y-3">
-			<h2 className="min-w-0 text-base font-bold text-zinc-900 [overflow-wrap:anywhere]">{children}</h2>
+		<div className="mb-4 flex min-w-0 flex-wrap items-center justify-between gap-x-4 gap-y-3">
+			<h2 className="font-crest min-w-0 text-lg font-semibold tracking-tight text-stone-900 [overflow-wrap:anywhere]">
+				{children}
+			</h2>
 			{action ? (
 				<div className="flex w-full min-w-0 flex-wrap items-center gap-2 sm:w-auto [&>*]:max-w-full [&>.flex]:flex-wrap">
 					{action}
@@ -39,11 +43,11 @@ export function SectionTitle({
 type BadgeTone = "brand" | "green" | "amber" | "red" | "zinc";
 
 const BADGES: Record<BadgeTone, string> = {
-	brand: "bg-brand-50 text-brand-700 ring-brand-200",
-	green: "bg-green-50 text-green-700 ring-green-200",
-	amber: "bg-amber-50 text-amber-800 ring-amber-200",
-	red: "bg-red-50 text-red-700 ring-red-200",
-	zinc: "bg-zinc-100 text-zinc-600 ring-zinc-200",
+	brand: "bg-brand-50 text-brand-700 ring-brand-200/70",
+	green: "bg-green-50 text-green-700 ring-green-200/70",
+	amber: "bg-amber-50 text-amber-700 ring-amber-200/70",
+	red: "bg-red-50 text-red-700 ring-red-200/70",
+	zinc: "bg-stone-100 text-stone-500 ring-stone-200/80",
 };
 
 export function Badge({
@@ -55,7 +59,7 @@ export function Badge({
 }): ReactElement {
 	return (
 		<span
-			className={`inline-flex max-w-full items-center gap-1 rounded-full px-2.5 py-1 text-xs [overflow-wrap:anywhere] font-semibold ring-1 ring-inset ${BADGES[tone]}`}
+			className={`inline-flex max-w-full items-center gap-1 rounded-full px-2 py-0.5 text-[11px] [overflow-wrap:anywhere] font-medium tracking-wide ring-1 ring-inset ${BADGES[tone]}`}
 		>
 			{children}
 		</span>
@@ -72,12 +76,14 @@ export function Stat({
 	loading?: boolean;
 }): ReactElement {
 	return (
-		<Card className="p-3 text-center">
-			<p className="text-xs font-medium text-zinc-500">{label}</p>
-			<p className="mt-0.5 text-xl font-bold tabular-nums text-zinc-900">
-				{loading ? <span className="text-zinc-300">…</span> : value}
+		<div className="rounded-2xl border border-stone-200/80 bg-white px-4 py-4 text-left">
+			<p className="text-[11px] font-medium tracking-wide text-stone-400 uppercase">
+				{label}
 			</p>
-		</Card>
+			<p className="font-crest mt-1.5 text-2xl font-semibold tabular-nums text-stone-900">
+				{loading ? <span className="text-stone-300">…</span> : value}
+			</p>
+		</div>
 	);
 }
 
@@ -98,7 +104,7 @@ export function ProgressBar({
 			aria-valuenow={Math.round(pct)}
 			aria-valuemin={0}
 			aria-valuemax={100}
-			className="h-2 flex-1 overflow-hidden rounded-full bg-zinc-200"
+			className="h-1.5 flex-1 overflow-hidden rounded-full bg-stone-200/80"
 		>
 			<div
 				className="h-full rounded-full bg-brand-600 transition-[width] duration-300"
@@ -114,7 +120,7 @@ export function Spinner({
 	label?: string;
 }): ReactElement {
 	return (
-		<p className="flex items-center gap-2 text-sm text-zinc-500" role="status">
+		<p className="flex items-center gap-2 text-sm text-stone-500" role="status">
 			<LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
 			{label}
 		</p>
@@ -129,7 +135,7 @@ export function Skeleton({
 	return (
 		<div
 			aria-hidden="true"
-			className={`animate-pulse rounded bg-zinc-200 ${className}`}
+			className={`animate-pulse rounded-lg bg-stone-200/70 ${className}`}
 		/>
 	);
 }
@@ -146,13 +152,13 @@ export function EmptyState({
 	action?: ReactNode;
 }): ReactElement {
 	return (
-		<div className="flex flex-col items-center gap-1.5 rounded-xl border border-dashed border-zinc-300 bg-white px-4 py-8 text-center">
-			<span className="rounded-full bg-zinc-100 p-2.5 text-zinc-400">
+		<div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-stone-300 bg-white px-4 py-12 text-center">
+			<span className="rounded-full bg-stone-100 p-2.5 text-stone-400">
 				{icon ?? <Inbox className="h-5 w-5" aria-hidden="true" />}
 			</span>
-			<p className="text-sm font-semibold text-zinc-800">{title}</p>
-			{body ? <p className="max-w-sm text-xs text-zinc-500">{body}</p> : null}
-			{action ? <div className="mt-1">{action}</div> : null}
+			<p className="text-sm font-medium text-stone-700">{title}</p>
+			{body ? <p className="max-w-sm text-xs text-stone-500">{body}</p> : null}
+			{action ? <div className="mt-2">{action}</div> : null}
 		</div>
 	);
 }
