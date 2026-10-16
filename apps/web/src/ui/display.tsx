@@ -10,7 +10,7 @@ export function Card({
 }): ReactElement {
 	return (
 		<div
-			className={`rounded-2xl border border-stone-200/80 bg-white ${
+			className={`rounded-2xl border border-zinc-200/80 bg-white ${
 				className
 			}`}
 		>
@@ -28,7 +28,7 @@ export function SectionTitle({
 }): ReactElement {
 	return (
 		<div className="mb-4 flex min-w-0 flex-wrap items-center justify-between gap-x-4 gap-y-3">
-			<h2 className="font-crest min-w-0 text-lg font-semibold tracking-tight text-stone-900 [overflow-wrap:anywhere]">
+			<h2 className="font-crest min-w-0 text-lg font-semibold tracking-tight text-zinc-900 [overflow-wrap:anywhere]">
 				{children}
 			</h2>
 			{action ? (
@@ -47,7 +47,7 @@ const BADGES: Record<BadgeTone, string> = {
 	green: "bg-green-50 text-green-700 ring-green-200/70",
 	amber: "bg-amber-50 text-amber-700 ring-amber-200/70",
 	red: "bg-red-50 text-red-700 ring-red-200/70",
-	zinc: "bg-stone-100 text-stone-500 ring-stone-200/80",
+	zinc: "bg-zinc-100 text-zinc-500 ring-zinc-200/80",
 };
 
 export function Badge({
@@ -76,12 +76,12 @@ export function Stat({
 	loading?: boolean;
 }): ReactElement {
 	return (
-		<div className="rounded-2xl border border-stone-200/80 bg-white px-4 py-4 text-left">
-			<p className="text-[11px] font-medium tracking-wide text-stone-400 uppercase">
+		<div className="rounded-2xl border border-zinc-200/80 bg-white px-4 py-4 text-left">
+			<p className="text-[11px] font-medium tracking-wide text-zinc-400 uppercase">
 				{label}
 			</p>
-			<p className="font-crest mt-1.5 text-2xl font-semibold tabular-nums text-stone-900">
-				{loading ? <span className="text-stone-300">…</span> : value}
+			<p className="font-crest mt-1.5 text-2xl font-semibold tabular-nums text-zinc-900">
+				{loading ? <span className="text-zinc-300">…</span> : value}
 			</p>
 		</div>
 	);
@@ -104,7 +104,7 @@ export function ProgressBar({
 			aria-valuenow={Math.round(pct)}
 			aria-valuemin={0}
 			aria-valuemax={100}
-			className="h-1.5 flex-1 overflow-hidden rounded-full bg-stone-200/80"
+			className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-200/80"
 		>
 			<div
 				className="h-full rounded-full bg-brand-600 transition-[width] duration-300"
@@ -120,7 +120,7 @@ export function Spinner({
 	label?: string;
 }): ReactElement {
 	return (
-		<p className="flex items-center gap-2 text-sm text-stone-500" role="status">
+		<p className="flex items-center gap-2 text-sm text-zinc-500" role="status">
 			<LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
 			{label}
 		</p>
@@ -135,7 +135,7 @@ export function Skeleton({
 	return (
 		<div
 			aria-hidden="true"
-			className={`animate-pulse rounded-lg bg-stone-200/70 ${className}`}
+			className={`animate-pulse rounded-lg bg-zinc-200/70 ${className}`}
 		/>
 	);
 }
@@ -152,12 +152,12 @@ export function EmptyState({
 	action?: ReactNode;
 }): ReactElement {
 	return (
-		<div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-stone-300 bg-white px-4 py-12 text-center">
-			<span className="rounded-full bg-stone-100 p-2.5 text-stone-400">
+		<div className="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-zinc-300 bg-white px-4 py-12 text-center">
+			<span className="rounded-full bg-zinc-100 p-2.5 text-zinc-400">
 				{icon ?? <Inbox className="h-5 w-5" aria-hidden="true" />}
 			</span>
-			<p className="text-sm font-medium text-stone-700">{title}</p>
-			{body ? <p className="max-w-sm text-xs text-stone-500">{body}</p> : null}
+			<p className="text-sm font-medium text-zinc-700">{title}</p>
+			{body ? <p className="max-w-sm text-xs text-zinc-500">{body}</p> : null}
 			{action ? <div className="mt-2">{action}</div> : null}
 		</div>
 	);

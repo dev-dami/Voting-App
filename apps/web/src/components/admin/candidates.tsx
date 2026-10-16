@@ -107,7 +107,7 @@ export function PhotoTile({
 						<ImagePlus className="h-7 w-7" aria-hidden="true" />
 					</span>
 				)}
-				<span className="absolute inset-0 flex items-center justify-center gap-1.5 bg-stone-900/50 px-3 text-[11px] font-medium tracking-wide text-white opacity-0 transition-opacity duration-200 group-hover/photo:opacity-100">
+				<span className="absolute inset-0 flex items-center justify-center gap-1.5 bg-zinc-900/50 px-3 text-[11px] font-medium tracking-wide text-white opacity-0 transition-opacity duration-200 group-hover/photo:opacity-100">
 					<ImagePlus className="h-4 w-4 shrink-0" aria-hidden="true" />
 					{current || preview ? "Change photo" : "Set photo"}
 				</span>
@@ -256,7 +256,7 @@ export function Candidates(): ReactElement {
 				}
 			>
 				Candidates
-				<span className="ml-2 text-sm font-normal text-stone-400 tabular-nums">
+				<span className="ml-2 text-sm font-normal text-zinc-400 tabular-nums">
 					{listQuery.data?.candidates.length ?? 0}
 				</span>
 			</SectionTitle>
@@ -285,7 +285,7 @@ export function Candidates(): ReactElement {
 				<div className="space-y-6">
 					{[...grouped.entries()].map(([pos, list]) => (
 						<div key={pos}>
-							<h3 className="mb-2.5 text-[11px] font-medium tracking-[0.18em] text-stone-400 uppercase">
+							<h3 className="mb-2.5 text-[11px] font-medium tracking-[0.18em] text-zinc-400 uppercase">
 								{pos}
 								<span className="ml-1.5 font-normal tabular-nums normal-case">
 									{list.length}
@@ -295,7 +295,7 @@ export function Candidates(): ReactElement {
 								{list.map((c) => (
 									<li
 										key={c.id}
-										className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white transition-colors hover:border-stone-300"
+										className="overflow-hidden rounded-2xl border border-zinc-200/80 bg-white transition-colors hover:border-zinc-300"
 									>
 										<PhotoTile
 											current={c.image}
@@ -305,10 +305,10 @@ export function Candidates(): ReactElement {
 											}}
 										/>
 										<div className="px-3 py-2.5">
-											<p className="truncate text-sm font-medium text-stone-900">
+											<p className="truncate text-sm font-medium text-zinc-900">
 												{c.name}
 											</p>
-											<p className="mt-0.5 text-xs tabular-nums text-stone-400">
+											<p className="mt-0.5 text-xs tabular-nums text-zinc-400">
 												{c.votes} vote{c.votes === 1 ? "" : "s"}
 											</p>
 											<div className="mt-1.5 flex items-center justify-end gap-0.5">

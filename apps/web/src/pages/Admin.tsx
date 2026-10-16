@@ -118,17 +118,17 @@ export function Admin(): ReactElement {
 
 	return (
 		<div className="-mx-4 -my-6 sm:-mx-6 lg:-mx-8 lg:flex lg:items-stretch">
-			<aside className="mb-4 px-4 pt-4 sm:px-6 lg:sticky lg:top-[57px] lg:mb-0 lg:flex lg:h-[calc(100vh-57px)] lg:w-60 lg:shrink-0 lg:flex-col lg:overflow-y-auto lg:border-l lg:border-stone-200/80 lg:bg-stone-50/60 lg:px-0 lg:py-6 lg:pt-6">
-				<p className="mb-1 hidden px-5 text-[10px] font-medium tracking-[0.18em] text-stone-400 uppercase lg:block">
+			<aside className="mb-4 px-4 pt-4 sm:px-6 lg:sticky lg:top-[57px] lg:mb-0 lg:flex lg:h-[calc(100vh-57px)] lg:w-60 lg:shrink-0 lg:flex-col lg:overflow-y-auto lg:border-l lg:border-zinc-200/80 lg:bg-zinc-50/60 lg:px-0 lg:py-6 lg:pt-6">
+				<p className="mb-1 hidden px-5 text-[10px] font-medium tracking-[0.18em] text-zinc-400 uppercase lg:block">
 					Admin console
 				</p>
 				<nav
 					aria-label="Admin sections"
-					className="flex gap-1 overflow-x-auto rounded-xl border border-stone-200/80 bg-white p-1.5 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:px-3"
+					className="flex gap-1 overflow-x-auto rounded-xl border border-zinc-200/80 bg-white p-1.5 lg:flex-col lg:gap-0.5 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:px-3"
 				>
 					{GROUPS.map((g) => (
 						<div key={g.label} className="flex gap-1 lg:mb-3 lg:flex-col lg:gap-0.5">
-							<p className="hidden px-3 pt-1 pb-1.5 text-[10px] font-medium tracking-[0.18em] text-stone-400 uppercase lg:block">
+							<p className="hidden px-3 pt-1 pb-1.5 text-[10px] font-medium tracking-[0.18em] text-zinc-400 uppercase lg:block">
 								{g.label}
 							</p>
 							{g.items.map((s) => {
@@ -142,19 +142,19 @@ export function Admin(): ReactElement {
 										aria-current={active ? "page" : undefined}
 										className={`flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-left text-sm whitespace-nowrap transition-colors ${
 											active
-												? "bg-white font-medium text-stone-900 ring-1 ring-stone-200/80 lg:bg-white"
-												: "text-stone-500 hover:text-stone-900"
+												? "bg-white font-medium text-zinc-900 ring-1 ring-zinc-200/80 lg:bg-white"
+												: "text-zinc-500 hover:text-zinc-900"
 										}`}
 									>
 										<span
 											aria-hidden="true"
 											className={`h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
-												active ? "bg-brand-600" : "bg-stone-300"
+												active ? "bg-brand-600" : "bg-zinc-300"
 											}`}
 										/>
 										<span className="flex-1">{s.label}</span>
 										{badge !== null && (
-											<span className="text-[11px] tabular-nums text-stone-400">
+											<span className="text-[11px] tabular-nums text-zinc-400">
 												{badge}
 											</span>
 										)}
@@ -164,19 +164,19 @@ export function Admin(): ReactElement {
 						</div>
 					))}
 				</nav>
-				<div className="mt-auto hidden border-t border-stone-200/80 p-4 lg:block">
+				<div className="mt-auto hidden border-t border-zinc-200/80 p-4 lg:block">
 					<div className="flex items-center gap-2.5">
 						<span
 							aria-hidden="true"
-							className="font-crest flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-stone-900 text-sm font-semibold text-white"
+							className="font-crest flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white"
 						>
 							{initial}
 						</span>
 						<span className="min-w-0 flex-1 leading-tight">
-							<span className="block truncate text-xs font-medium text-stone-900">
+							<span className="block truncate text-xs font-medium text-zinc-900">
 								{user?.studentId ?? "—"}
 							</span>
-							<span className="block text-[11px] text-stone-400">
+							<span className="block text-[11px] text-zinc-400">
 								Administrator
 							</span>
 						</span>
@@ -185,7 +185,7 @@ export function Admin(): ReactElement {
 							onClick={() => void onLogout()}
 							title="Logout"
 							aria-label="Logout"
-							className="rounded-lg p-2 text-stone-400 hover:bg-stone-200/60 hover:text-stone-800"
+							className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-200/60 hover:text-zinc-800"
 						>
 							<LogOut className="h-4 w-4" aria-hidden="true" />
 						</button>
@@ -195,10 +195,10 @@ export function Admin(): ReactElement {
 
 			<div className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8">
 				<div className="mb-6 max-w-2xl">
-					<h1 className="font-crest text-2xl font-semibold tracking-tight text-stone-900">
+					<h1 className="font-crest text-2xl font-semibold tracking-tight text-zinc-900">
 						{heading.title}
 					</h1>
-					<p className="mt-1 text-[13px] text-stone-500">{heading.body}</p>
+					<p className="mt-1 text-[13px] text-zinc-500">{heading.body}</p>
 				</div>
 				{section === "overview" && (
 					<AdminOverview onNavigate={(s: string) => setSection(s as Section)} />

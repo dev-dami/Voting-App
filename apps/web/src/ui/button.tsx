@@ -6,14 +6,14 @@ type Size = "sm" | "md" | "lg";
 
 const VARIANTS: Record<Variant, string> = {
 	brand:
-		"bg-stone-900 font-medium text-white hover:bg-stone-800 disabled:opacity-60",
+		"bg-brand-600 font-semibold text-white shadow-sm hover:bg-brand-700 disabled:opacity-60",
 	outline:
-		"border border-stone-200 bg-white font-medium text-stone-600 hover:border-stone-300 hover:bg-stone-50 disabled:opacity-60",
+		"border border-zinc-300 bg-white font-semibold text-zinc-700 hover:border-zinc-400 hover:bg-zinc-50 disabled:opacity-60",
 	ghost:
-		"font-medium text-stone-500 hover:bg-stone-100 hover:text-stone-900 disabled:opacity-60",
+		"font-medium text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-60",
 	danger:
-		"bg-red-800 font-medium text-white hover:bg-red-900 disabled:opacity-60",
-	soft: "bg-brand-50 font-medium text-brand-700 hover:bg-brand-100 disabled:opacity-60",
+		"bg-red-700 font-semibold text-white shadow-sm hover:bg-red-800 disabled:opacity-60",
+	soft: "bg-brand-50 font-semibold text-brand-700 hover:bg-brand-100 disabled:opacity-60",
 };
 
 const SIZES: Record<Size, string> = {

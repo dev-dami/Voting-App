@@ -1,24 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-	/* Muted spruce — calm, quiet accent */
-	--color-brand-50: #f4f7f5;
-	--color-brand-100: #e6ece8;
-	--color-brand-200: #c9d7d0;
-	--color-brand-300: #a6bdb2;
-	--color-brand-400: #7d9c8e;
-	--color-brand-500: #5f8172;
-	--color-brand-600: #4a685a;
-	--color-brand-700: #3c554a;
-	--color-brand-800: #31463d;
-	--color-brand-900: #283a31;
-	--color-brand: #4a685a;
-	--color-brand-dark: #3c554a;
-	--color-brand-darker: #26352d;
-	--color-brand-soft: #f4f7f5;
-
-	/* Warm paper neutrals */
-	--color-paper: #fafaf8;
+	--color-brand-50: #fdf2f2;
+	--color-brand-100: #fbe4e4;
+	--color-brand-200: #f7c9c9;
+	--color-brand-300: #f0a3a3;
+	--color-brand-400: #e06f6f;
+	--color-brand-500: #c94848;
+	--color-brand-600: #a73434;
+	--color-brand-700: #8f2c2c;
+	--color-brand-800: #752727;
+	--color-brand-900: #5f2121;
+	--color-brand: #a73434;
+	--color-brand-dark: #8f2c2c;
+	--color-brand-darker: #8b1a1a;
+	--color-brand-soft: #fdf2f2;
 }
 
 :root {
@@ -26,8 +22,8 @@
 }
 
 body {
-	background-color: #fafaf8;
-	color: #1c1917;
+	background-color: #f4f4f5;
+	color: #18181b;
 	font-size: 0.875rem;
 	line-height: 1.25rem;
 	font-family:
@@ -41,7 +37,7 @@ body {
 	outline-style: solid;
 	outline-width: 2px;
 	outline-offset: 2px;
-	outline-color: #4a685a;
+	outline-color: #a73434;
 }
 
 label:has(input:focus-visible) {

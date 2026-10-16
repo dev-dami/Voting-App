@@ -95,27 +95,27 @@ export function AdminOverview({
 					</div>
 				) : (
 					<ul className="grid gap-2.5 text-[13px] sm:grid-cols-2">
-						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
-							<Users className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
+						<li className="flex items-center gap-2.5 rounded-xl border border-zinc-100 bg-zinc-50/70 px-3.5 py-2.5 text-zinc-600">
+							<Users className="h-4 w-4 shrink-0 text-zinc-400" aria-hidden="true" />
 							<span>
-								<span className="font-semibold text-stone-900">
+								<span className="font-semibold text-zinc-900">
 									{usersQuery.data?.users.length ?? 0}
 								</span>{" "}
 								user accounts registered
 							</span>
 						</li>
-						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
-							<Crown className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
+						<li className="flex items-center gap-2.5 rounded-xl border border-zinc-100 bg-zinc-50/70 px-3.5 py-2.5 text-zinc-600">
+							<Crown className="h-4 w-4 shrink-0 text-zinc-400" aria-hidden="true" />
 							<span>
-								<span className="font-semibold text-stone-900">{candidates}</span>{" "}
+								<span className="font-semibold text-zinc-900">{candidates}</span>{" "}
 								candidates across{" "}
-								<span className="font-semibold text-stone-900">{positions}</span>{" "}
+								<span className="font-semibold text-zinc-900">{positions}</span>{" "}
 								positions
 							</span>
 						</li>
-						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
+						<li className="flex items-center gap-2.5 rounded-xl border border-zinc-100 bg-zinc-50/70 px-3.5 py-2.5 text-zinc-600">
 							<CalendarClock
-								className="h-4 w-4 shrink-0 text-stone-400"
+								className="h-4 w-4 shrink-0 text-zinc-400"
 								aria-hidden="true"
 							/>
 							<span>
@@ -129,15 +129,15 @@ export function AdminOverview({
 								</Badge>
 							</span>
 						</li>
-						<li className="flex items-center gap-2.5 rounded-xl border border-stone-100 bg-stone-50/70 px-3.5 py-2.5 text-stone-600">
-							<Inbox className="h-4 w-4 shrink-0 text-stone-400" aria-hidden="true" />
+						<li className="flex items-center gap-2.5 rounded-xl border border-zinc-100 bg-zinc-50/70 px-3.5 py-2.5 text-zinc-600">
+							<Inbox className="h-4 w-4 shrink-0 text-zinc-400" aria-hidden="true" />
 							<span>
-								<span className="font-semibold text-stone-900">{openIssues}</span>{" "}
+								<span className="font-semibold text-zinc-900">{openIssues}</span>{" "}
 								open issues —{" "}
 								<button
 									type="button"
 									onClick={() => onNavigate("issues")}
-									className="rounded font-medium text-brand-700 underline decoration-stone-300 underline-offset-2 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2"
+									className="rounded font-medium text-brand-700 underline decoration-zinc-300 underline-offset-2 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2"
 								>
 									manage issues
 								</button>
@@ -153,16 +153,16 @@ export function AdminOverview({
 						key={s.section}
 						type="button"
 						onClick={() => onNavigate(s.section)}
-						className="group flex items-center justify-between gap-2 rounded-2xl border border-stone-200/80 bg-white p-4 text-left transition-colors hover:border-brand-300"
+						className="group flex items-center justify-between gap-2 rounded-2xl border border-zinc-200/80 bg-white p-4 text-left transition-colors hover:border-brand-300"
 					>
 						<span>
-							<span className="block text-sm font-medium text-stone-900">
+							<span className="block text-sm font-medium text-zinc-900">
 								{s.label}
 							</span>
-							<span className="block mt-0.5 text-xs text-stone-500">{s.body}</span>
+							<span className="block mt-0.5 text-xs text-zinc-500">{s.body}</span>
 						</span>
 						<ArrowRight
-							className="h-4 w-4 shrink-0 text-stone-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-600"
+							className="h-4 w-4 shrink-0 text-zinc-300 transition-all group-hover:translate-x-0.5 group-hover:text-brand-600"
 							aria-hidden="true"
 						/>
 					</button>

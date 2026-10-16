@@ -33,13 +33,13 @@ function Countdown({ endTime }: { endTime: string }): ReactElement {
 		["sec", p.s],
 	];
 	return (
-		<Card className="flex items-center gap-4 bg-brand-800 p-5 text-white">
+		<Card className="flex items-center gap-4 bg-zinc-900 p-5 text-white">
 			<Hourglass
 				className="h-6 w-6 shrink-0 text-brand-200"
 				aria-hidden="true"
 			/>
 			<div>
-				<p className="text-[10px] font-medium tracking-[0.18em] text-brand-200/80 uppercase">
+				<p className="text-[10px] font-medium tracking-[0.18em] text-zinc-400 uppercase">
 					{left <= 0 ? "Voting closed" : "Voting closes in"}
 				</p>
 				<p
@@ -48,9 +48,9 @@ function Countdown({ endTime }: { endTime: string }): ReactElement {
 				>
 					{cells.map(([label, v], i) => (
 						<span key={label}>
-							{i > 0 && <span className="text-brand-400"> : </span>}
+							{i > 0 && <span className="text-zinc-500"> : </span>}
 							{String(v).padStart(2, "0")}
-							<span className="ml-0.5 align-middle text-[11px] font-sans font-medium text-brand-200/70">
+							<span className="ml-0.5 align-middle text-[11px] font-sans font-medium text-zinc-400">
 								{label}
 							</span>
 						</span>
@@ -76,7 +76,7 @@ export function Timing(): ReactElement {
 			) : (
 				<Card className="p-5">
 					<SectionTitle>Schedule</SectionTitle>
-					<p className="text-[13px] text-stone-500">
+					<p className="text-[13px] text-zinc-500">
 						{election?.status === "ended"
 							? "The election has ended. Reset it from Rollbacks to run again."
 							: "No live countdown — start the election with an end time to schedule the close."}

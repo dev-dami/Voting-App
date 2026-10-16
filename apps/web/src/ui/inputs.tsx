@@ -4,7 +4,7 @@ import type { AriaAttributes, InputHTMLAttributes, ReactElement, ReactNode } fro
 import { createContext, useContext, useId, useState } from "react";
 
 const INPUT_CLASS =
-	"min-h-11 w-full min-w-0 rounded-lg border border-stone-200 bg-white px-3 py-2 text-base text-stone-900 placeholder:text-stone-400 focus:border-brand-600 disabled:cursor-not-allowed disabled:bg-stone-100 disabled:text-stone-500 sm:text-sm";
+	"min-h-11 w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-base text-zinc-900 placeholder:text-zinc-400 focus:border-brand-600 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-500 sm:text-sm";
 
 const FieldContext = createContext<{
 	id: string;
@@ -45,7 +45,7 @@ export function Field({
 			<div className="min-w-0">
 				<label
 					htmlFor={htmlFor}
-					className="mb-1.5 block text-[13px] font-medium text-stone-600"
+					className="mb-1.5 block text-[13px] font-medium text-zinc-600"
 				>
 					{label}
 				</label>
