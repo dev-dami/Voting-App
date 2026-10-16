@@ -1,0 +1,6 @@
+[Unit]
+Description=Consistent voting database and photo backup
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/vote-backup

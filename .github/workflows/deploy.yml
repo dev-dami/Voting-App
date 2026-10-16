@@ -1,0 +1,29 @@
+name: Voting image
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+concurrency:
+  group: voting-image-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  image:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Alpine image, ballot tests, and web build
+        run: |
+          podman build -f apps/api/Containerfile -t ghcr.io/dev-dami/yhs-voting-api:${{ github.sha }} .
+      - name: Publish immutable and latest tags
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf '%s' "$GHCR_TOKEN" | podman login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          podman push ghcr.io/dev-dami/yhs-voting-api:${{ github.sha }}
+          podman tag ghcr.io/dev-dami/yhs-voting-api:${{ github.sha }} ghcr.io/dev-dami/yhs-voting-api:latest
+          podman push ghcr.io/dev-dami/yhs-voting-api:latest

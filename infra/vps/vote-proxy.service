@@ -1,0 +1,9 @@
+[Unit]
+Description=Voting socket proxy (exit after five idle minutes)
+Requires=vote.service
+After=vote.service
+
+[Service]
+ExecStartPre=%h/.local/bin/vote-wait
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd --exit-idle-time=300s 127.0.0.1:8082
+NoNewPrivileges=true

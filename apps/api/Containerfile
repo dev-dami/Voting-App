@@ -1,0 +1,33 @@
+ARG BUN_VERSION=1.4.2
+FROM docker.io/oven/bun:${BUN_VERSION}-alpine AS manifests
+WORKDIR /app
+COPY package.json bun.lock ./
+COPY apps/api/package.json ./apps/api/package.json
+COPY apps/web/package.json ./apps/web/package.json
+COPY packages/shared/package.json ./packages/shared/package.json
+
+FROM manifests AS build
+RUN bun install --frozen-lockfile --ignore-scripts --filter @yhs-voting/api --filter @yhs-voting/web --filter @yhs-voting/shared
+COPY tsconfig.base.json ./
+COPY apps ./apps
+COPY packages ./packages
+RUN cd apps/api && bun test tests
+RUN cd apps/web && VITE_API_URL= bun run build
+
+FROM manifests AS production-deps
+RUN bun install --frozen-lockfile --production --ignore-scripts --filter @yhs-voting/api --filter @yhs-voting/shared
+
+FROM docker.io/oven/bun:${BUN_VERSION}-alpine AS runtime
+WORKDIR /app/apps/api
+COPY --from=production-deps /app/ /app/
+COPY apps/api/src ./src
+COPY apps/api/scripts ./scripts
+COPY apps/api/drizzle ./drizzle
+COPY apps/api/public ./public
+COPY packages/shared /app/packages/shared
+COPY --from=build /app/apps/web/dist /opt/vote-web
+RUN mkdir -p data uploads logs && chown -R bun:bun data uploads logs
+ENV NODE_ENV=production PORT=8080 DATABASE_URL=/app/apps/api/data/voting.db
+EXPOSE 8080
+USER bun
+CMD ["bun", "run", "src/index.ts"]

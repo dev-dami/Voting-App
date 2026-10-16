@@ -1,0 +1,32 @@
+[Unit]
+Description=Yeshua Voting API
+Wants=network-online.target
+After=network-online.target
+
+[Container]
+Image=localhost/yhs-voting:current
+ContainerName=yhs-vote
+UserNS=keep-id:uid=1000,gid=1000
+Volume=yhs-vote-data:/app/apps/api/data:U
+Volume=yhs-vote-uploads:/app/apps/api/uploads:U
+Volume=yhs-vote-logs:/app/apps/api/logs:U
+EnvironmentFile=%h/.config/vote/production.env
+PublishPort=127.0.0.1:8082:8080
+NoNewPrivileges=true
+DropCapability=all
+ReadOnly=true
+Tmpfs=/tmp:rw,size=32m
+HealthCmd=bun -e 'const r=await fetch("http://127.0.0.1:8080/api/health");process.exit(r.ok?0:1)'
+HealthInterval=30s
+HealthStartPeriod=30s
+PodmanArgs=--memory=256m --memory-swap=384m --cpus=1 --pids-limit=128 --log-opt=max-size=10mb
+
+[Service]
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+MemoryHigh=240M
+MemoryMax=300M
+
+[Install]
+WantedBy=default.target
